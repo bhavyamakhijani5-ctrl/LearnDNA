@@ -1,0 +1,59 @@
+/* MODULE 6 -- Code Practice styles (uses the theme variables from theme.css, so dark/light both work). */
+.pr-layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(250px, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 960px) { .pr-layout { grid-template-columns: 1fr; } }
+
+.pr-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 12px; }
+.pr-chip { border: 1px solid var(--border); background: var(--chip); color: var(--text-dim); font: 600 12.5px 'Inter', sans-serif; padding: 7px 13px; border-radius: 20px; cursor: pointer; transition: all .15s; }
+.pr-chip:hover { color: var(--text); border-color: var(--accent); }
+.pr-chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pr-search { width: 100%; max-width: 340px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 999px; background: var(--panel-2); color: var(--text); font: inherit; font-size: 13.5px; margin-bottom: 8px; }
+.pr-search:focus { outline: none; border-color: var(--accent); }
+
+.pr-row { display: grid; grid-template-columns: 28px minmax(170px, 1fr) 150px 62px 84px; align-items: center; gap: 10px; padding: 13px 4px; border-top: 1px solid var(--border); color: var(--text); text-decoration: none; }
+.pr-row:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.pr-idx { color: var(--text-faint); font-family: "Courier New", monospace; font-size: 12px; }
+.pr-title { font-weight: 600; font-size: 14.5px; }
+.pr-done { color: var(--green); font-weight: 700; }
+.pr-cat { color: var(--text-dim); font-size: 12.5px; }
+.pr-go { justify-self: end; text-align: center; pointer-events: none; }
+@media (max-width: 700px) { .pr-row { grid-template-columns: 28px 1fr auto; } .pr-cat, .pr-diff { display: none; } }
+
+.pr-diff { font-weight: 700; font-size: 12.5px; }
+.pr-diff.Easy { color: var(--green); } .pr-diff.Medium { color: var(--amber); } .pr-diff.Hard { color: var(--red); }
+.pr-diffstat { display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+
+.pr-lb-head { display: flex; justify-content: space-between; align-items: center; }
+.pr-lb { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 10px 6px; border-top: 1px solid var(--border); font-size: 14px; }
+.pr-lb.me { background: var(--accent-soft, color-mix(in srgb, var(--accent) 15%, transparent)); border-radius: 8px; }
+.pr-lb-who { display: flex; flex-direction: column; min-width: 0; } .pr-lb-who b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pr-lb-who small { color: var(--text-faint); font-size: 11.5px; } .pr-lb-xp { color: var(--text-dim); font-size: 13px; }
+
+/* scratchpad */
+.pr-back { display: inline-block; color: var(--text-dim); font-size: 13px; text-decoration: none; margin-bottom: 10px; } .pr-back:hover { color: var(--accent); }
+.pr-titlebar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; } .pr-titlebar h1 { font-size: 25px; margin-right: 6px; }
+.pr-problem { margin-bottom: 16px; font-size: 14px; line-height: 1.6; }
+.pr-problem code, .pr-scratch .hint code, .pr-testtbl code { font-family: "Courier New", monospace; font-size: 12.5px; background: var(--chip); padding: 1px 6px; border-radius: 5px; }
+.pr-help { display: flex; gap: 8px; margin-top: 12px; }
+.pr-solution { margin-top: 12px; padding: 14px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; font: 12.5px/1.55 "Courier New", monospace; overflow-x: auto; white-space: pre; }
+
+.pr-scratch-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; } .pr-scratch-head h2 { font-size: 19px; }
+.pr-drafts { display: flex; gap: 8px; align-items: center; }
+.pr-work { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(240px, 1fr); gap: 16px; }
+@media (max-width: 900px) { .pr-work { grid-template-columns: 1fr; } }
+.pr-editor { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--panel-2); display: flex; flex-direction: column; }
+.pr-toolbar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.pr-spacer { flex: 1; } .pr-lang { font-size: 12.5px; font-weight: 600; color: var(--text-dim); background: var(--chip); padding: 7px 12px; border-radius: 8px; }
+.pr-submit { background: var(--green); color: #07210f !important; }
+.pr-code { flex: 1; min-height: 340px; width: 100%; resize: vertical; border: 0; outline: none; background: transparent; color: var(--text); padding: 14px 16px; font: 13.5px/1.6 "Courier New", Consolas, monospace; tab-size: 2; white-space: pre; overflow: auto; }
+.pr-io { display: flex; flex-direction: column; gap: 8px; }
+.pr-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; }
+.pr-box { width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-2); color: var(--text); padding: 11px 13px; font: 13px/1.5 "Courier New", monospace; }
+.pr-in { resize: vertical; min-height: 70px; } .pr-in:focus { outline: none; border-color: var(--accent); }
+.pr-outbox { min-height: 96px; max-height: 240px; overflow: auto; margin: 0; white-space: pre-wrap; word-break: break-word; }
+.pr-muted { color: var(--text-faint); } .pr-err { color: var(--red); } .pr-ok { color: var(--green); font-weight: 600; }
+.pr-verdict { padding: 10px 13px; border-radius: 10px; font-size: 13.5px; font-weight: 600; }
+.pr-verdict.ok { background: var(--green-soft); color: var(--green); } .pr-verdict.bad { background: var(--red-soft); color: var(--red); } .pr-verdict.info { background: var(--chip); color: var(--text-dim); }
+.pr-testtbl { margin-top: 16px; } .pr-testtbl td { vertical-align: top; word-break: break-word; }
+.pr-testtbl tr.pass td:first-child { color: var(--green); font-weight: 700; } .pr-testtbl tr.fail td:first-child { color: var(--red); font-weight: 700; }
+
+.pr-lang-tag { display: block; font-weight: 500; font-size: 11px; color: var(--text-faint); margin-top: 2px; }

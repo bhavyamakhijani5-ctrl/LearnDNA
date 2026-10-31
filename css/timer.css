@@ -1,0 +1,66 @@
+/* Flip Clock & Study Countdown (Module 5). Colours come from --fc-* variables set per palette on #fs-stage. */
+.fs-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.fs-head h1 { font-size: 30px; letter-spacing: -.02em; }
+.fs-head .lede { max-width: 560px; font-size: 13.5px; }
+
+.fs-tabs { display: inline-flex; padding: 5px; gap: 2px; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; box-shadow: var(--shadow); }
+.fs-tabs button { display: inline-flex; align-items: center; gap: 7px; border: 0; background: transparent; color: var(--text-dim); font: 600 13.5px 'Inter', sans-serif; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; }
+.fs-tabs button:hover:not(.on) { color: var(--text); }
+.fs-tabs button.on { background: var(--accent); color: #fff; box-shadow: 0 3px 12px color-mix(in srgb, var(--accent) 45%, transparent); }
+.fs-tabs .ic { font-size: 15px; }
+
+.fs-stage { --fw: clamp(120px, 21vw, 240px); --fh: calc(var(--fw) * 1.18);
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 54px 28px 26px; min-height: 520px; border-radius: 36px;
+  border: 1px solid var(--border); background: radial-gradient(60% 50% at 50% 28%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 75%), var(--panel); box-shadow: var(--shadow); }
+.fs-stage[data-n="3"] { --fw: clamp(100px, 16vw, 200px); }
+.fs-stage:fullscreen { justify-content: center; border-radius: 0; background: var(--bg); --fw: min(30vw, 40vh); }
+.fs-stage:fullscreen[data-n="3"] { --fw: min(22vw, 36vh); }
+
+.fs-cards { display: flex; gap: clamp(14px, 2.4vw, 30px); justify-content: center; }
+.fs-sub { color: var(--text-dim); font-size: 14px; min-height: 20px; text-align: center; }
+
+/* ---- one flip card: static halves + two folding halves */
+.fc { position: relative; width: var(--fw); height: var(--fh); perspective: 1000px; border-radius: calc(var(--fw) * .115); color: var(--fc-fg); box-shadow: 0 18px 40px rgba(0,0,0,.22), 0 2px 0 rgba(255,255,255,.04) inset; background: var(--fc-bg); }
+.fc-half, .fc-fold { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; background: var(--fc-bg); }
+.fc-half.top, .fc-fold.top { top: 0; border-radius: calc(var(--fw) * .115) calc(var(--fw) * .115) 0 0; }
+.fc-half.bottom, .fc-fold.bottom { bottom: 0; border-radius: 0 0 calc(var(--fw) * .115) calc(var(--fw) * .115); }
+.fc b { position: absolute; left: 0; right: 0; height: var(--fh); line-height: var(--fh); text-align: center; font: 800 calc(var(--fh) * .58)/var(--fh) 'Raleway', 'Inter', sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.fc-half.top b, .fc-fold.top b { top: 0; }
+.fc-half.bottom b, .fc-fold.bottom b { top: calc(var(--fh) / -2); }
+.fc-fold { visibility: hidden; backface-visibility: hidden; }
+.fc-fold.top { transform-origin: 50% 100%; z-index: 3; }
+.fc-fold.bottom { transform-origin: 50% 0; transform: rotateX(90deg); z-index: 3; }
+.fc.go .fc-fold { visibility: visible; }
+.fc.go .fc-fold.top { animation: fcDown .3s ease-in forwards; }
+.fc.go .fc-fold.bottom { animation: fcUp .3s .3s ease-out both; }
+@keyframes fcDown { from { transform: rotateX(0); } to { transform: rotateX(-90deg); } }
+@keyframes fcUp { from { transform: rotateX(90deg); } to { transform: rotateX(0); } }
+.fc-line { position: absolute; left: -2px; right: -2px; top: 50%; height: 3px; margin-top: -1.5px; background: var(--fc-line); z-index: 6; opacity: .9; }
+.fc-label { position: absolute; z-index: 7; top: calc(var(--fw) * .1); left: calc(var(--fw) * .1); font: 700 calc(var(--fw) * .085)/1 'Inter', sans-serif; letter-spacing: .06em; color: var(--fc-label); }
+
+/* ---- controls */
+.fs-presets { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+.fs-chip { border: 1px solid var(--border); background: var(--chip); color: var(--text-dim); font: 600 13px 'Inter', sans-serif; padding: 8px 15px; border-radius: 999px; cursor: pointer; transition: all .15s; }
+.fs-chip:hover:not(:disabled):not(.on) { color: var(--text); border-color: var(--accent); }
+.fs-chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.fs-chip:disabled, .fs-custom input:disabled { opacity: .45; cursor: not-allowed; }
+.fs-custom { display: inline-flex; gap: 6px; align-items: center; }
+.fs-custom input { width: 72px; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); font: inherit; font-size: 13px; text-align: center; }
+.fs-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.fs-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--chip); color: var(--text); font: 700 15px 'Inter', sans-serif; padding: 13px 26px; border-radius: 999px; cursor: pointer; transition: transform .12s, background .15s; }
+.fs-btn:hover:not(:disabled) { transform: translateY(-1px); background: var(--panel-2); }
+.fs-btn:disabled { opacity: .45; cursor: not-allowed; }
+.fs-btn.primary { background: var(--text); border-color: var(--text); color: var(--bg); min-width: 150px; justify-content: center; }
+.fs-btn.primary:hover { background: var(--text); opacity: .9; }
+.fs-btn .ic { font-size: 13px; }
+
+.fs-foot { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 12px; }
+.fs-bar { width: 140px; height: 5px; border-radius: 5px; background: var(--track); overflow: hidden; } .fs-bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 5px; transition: width .25s linear; }
+.fs-tools { display: flex; gap: 10px; }
+.fs-tool { min-width: 46px; height: 46px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--chip); color: var(--text); font: 700 13.5px 'Inter', sans-serif; cursor: pointer; transition: background .15s, transform .12s; }
+.fs-tool:hover { background: var(--panel-2); transform: translateY(-1px); }
+.fs-stage:not([data-mode="clock"]) .fs-only-clock, .fs-stage:not([data-mode="count"]) .fs-only-count { display: none; }
+
+.fs-laps { margin-top: 16px; } .fs-laps h3 { margin-bottom: 8px; }
+.fs-laps table { width: 100%; } .fs-laps td, .fs-laps th { text-align: left; padding: 9px 10px; }
+@media (max-width: 700px) { .fs-stage { padding: 40px 14px 20px; border-radius: 26px; } .fs-tabs { width: 100%; justify-content: space-between; } .fs-tabs button { padding: 9px 10px; font-size: 12.5px; } }

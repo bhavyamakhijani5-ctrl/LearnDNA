@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnDNA — Smart Learning Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<script>document.documentElement.dataset.theme = localStorage.getItem("learndna:theme") || "dark";</script>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/practice.css">
+<link rel="stylesheet" href="css/timer.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<div id="app"></div>
+
+<!-- MODULE 1 — Data & Knowledge Graph -->
+<script src="module1-data-knowledge-graph/data.js"></script>
+<script src="module1-data-knowledge-graph/models.js"></script>
+<script src="module1-data-knowledge-graph/graph.js"></script>
+
+<!-- MODULE 2 — Adaptive Engine & Quiz System -->
+<script src="module2-adaptive-engine-quiz/engine.js"></script>
+<script src="module2-adaptive-engine-quiz/quiz.js"></script>
+
+<!-- MODULE 3 — Dashboard, Roadmap & Analytics UI -->
+<script src="module3-dashboard-roadmap-analytics/ui.js"></script>
+
+<!-- MODULE 5 — Engagement: streaks/goals, AI tutor, leaderboard & study groups (functions only; booted by Module 4) -->
+<script src="module5-engagement/engage.js"></script>
+<script src="module5-engagement/community.js"></script>
+<script src="module5-engagement/notes.js"></script>
+<script src="module5-engagement/tutor.js"></script>
+<script src="module5-engagement/assistant.js"></script>
+<script src="module5-engagement/explore.js"></script>
+<script src="module5-engagement/extras.js"></script>
+<script src="module5-engagement/timer.js"></script>
+<script src="module5-engagement/home.js"></script>
+
+<!-- MODULE 6 — Code Practice: challenge bank, sandboxed scratchpad, XP (functions only; booted by Module 4) -->
+<script src="module6-code-practice/challenges.js"></script>
+<script src="module6-code-practice/challenges-dsa.js"></script>
+<script src="module6-code-practice/challenges-java.js"></script>
+<script src="module6-code-practice/challenges-c.js"></script>
+<script src="module6-code-practice/challenges-cpp.js"></script>
+<script src="module6-code-practice/challenges-python.js"></script>
+<script src="module6-code-practice/challenges-dbms.js"></script>
+<script src="module6-code-practice/challenges-oop.js"></script>
+<script src="module6-code-practice/practice.js"></script>
+
+<!-- MODULE 4 — Login & Integration (must load last: wires everything + boots the app) -->
+<script src="module4-login-integration/auth.js"></script>
+<script src="module4-login-integration/store.js"></script>
+<script src="module4-login-integration/core.js"></script>
+</body>
+</html>

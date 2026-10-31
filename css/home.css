@@ -1,0 +1,26 @@
+/* Home / dashboard hero (Module 5) */
+.hm-hero { position: relative; margin: 0 0 18px; padding: 30px 30px 26px; border-radius: 28px; border: 1px solid var(--border); overflow: hidden;
+  background: radial-gradient(60% 120% at 0% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%), radial-gradient(50% 100% at 100% 100%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 65%), var(--panel); box-shadow: var(--shadow); }
+.hm-eyebrow { font: 700 11.5px 'Inter', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.hm-title { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.1; letter-spacing: -.03em; margin: 0; }
+.hm-name { background: linear-gradient(90deg, var(--text), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hm-tag { margin: 8px 0 22px; font-size: 17px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 6px; }
+.hm-tag span:nth-child(1) { color: #60a5fa; } .hm-tag span:nth-child(2) { color: #f472b6; } .hm-tag span:nth-child(3) { color: #fbbf24; } .hm-tag span:nth-child(4) { color: #4ade80; }
+
+.hm-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 1100px) { .hm-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .hm-tiles { grid-template-columns: 1fr; } }
+.hm-tile { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 16px 16px 14px; border-radius: 18px; text-decoration: none; color: var(--text);
+  background: color-mix(in srgb, var(--panel-2) 88%, transparent); border: 1px solid var(--border); transition: transform .15s, border-color .15s, box-shadow .15s; }
+.hm-tile:hover { transform: translateY(-3px); border-color: var(--tc, var(--accent)); box-shadow: 0 10px 26px color-mix(in srgb, var(--tc, var(--accent)) 22%, transparent); }
+.hm-tile.t-learn { --tc: #60a5fa; } .hm-tile.t-build { --tc: #f472b6; } .hm-tile.t-compete { --tc: #fbbf24; } .hm-tile.t-grow { --tc: #4ade80; }
+.hm-ic { font-size: 22px; }
+.hm-word { font: 800 19px 'Raleway', 'Inter', sans-serif; color: var(--tc); }
+.hm-line { font-size: 12.5px; color: var(--text-dim); line-height: 1.4; padding-right: 18px; }
+.hm-go { position: absolute; right: 14px; bottom: 12px; color: var(--tc); font-weight: 700; transition: transform .15s; } .hm-tile:hover .hm-go { transform: translateX(3px); }
+
+.hm-row { margin-bottom: 18px; }
+.hm-card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.hm-card-head h3 { font-size: 16px; color: var(--text); margin: 0; }
+.hm-more { font-size: 12.5px; color: var(--accent); text-decoration: none; font-weight: 600; } .hm-more:hover { text-decoration: underline; }
+.hm-live { background: var(--green-soft); color: var(--green); }
